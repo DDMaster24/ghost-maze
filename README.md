@@ -128,11 +128,13 @@ ghost-maze/
 - [x] Simple maze generation
 - [x] HUD and menu system
 
-### Phase 2: Core Mechanics (Current)
-- [ ] Collision and pellet collection
-- [ ] Key spawning system
-- [ ] Health and potion mechanics
-- [ ] Basic ghost AI
+### Phase 2: Core Mechanics ✅
+- [x] Collision and pellet collection
+- [x] Key spawning system (triggers at 25%)
+- [x] Health and potion mechanics
+- [x] Basic ghost AI with patrol/chase
+- [x] Damage system
+- [x] Visual feedback
 
 ### Phase 3: Combat & Power-Ups
 - [ ] Weapon system

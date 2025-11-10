@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { RigidBody, CapsuleCollider } from '@react-three/rapier'
 import { useKeyboardControls } from '@react-three/drei'
 import { Controls } from '../App'
+import { useGameStore } from '../stores/gameStore'
 import * as THREE from 'three'
 
 function Player() {
@@ -43,6 +44,10 @@ function Player() {
 
     // Camera follow
     const position = playerRef.current.translation()
+
+    // Update player position in store for collision detection
+    useGameStore.getState().setPlayerPosition([position.x, position.y, position.z])
+
     state.camera.position.lerp(
       new THREE.Vector3(position.x, position.y + 5, position.z + 10),
       0.1

@@ -167,19 +167,21 @@ Ghost Maze is a 3D RPG-style game inspired by classic Pac-Man, featuring modern 
 
 ## 📋 Development Phases
 
-### Phase 1: Foundation (Current)
-- [ ] Set up project structure
-- [ ] Initialize Three.js scene
-- [ ] Basic maze generation
-- [ ] Player character controller
-- [ ] Camera system
+### Phase 1: Foundation ✅ COMPLETE
+- [x] Set up project structure
+- [x] Initialize Three.js scene
+- [x] Basic maze generation
+- [x] Player character controller
+- [x] Camera system
 
-### Phase 2: Core Mechanics
-- [ ] Player movement and collision
-- [ ] Pellet collection system
-- [ ] Key/fragment spawning logic
-- [ ] Health and potion system
-- [ ] Basic ghost AI
+### Phase 2: Core Mechanics ✅ COMPLETE
+- [x] Player movement and collision
+- [x] Pellet collection system with collision detection
+- [x] Key spawning logic (triggers at 25% pellet collection)
+- [x] Health and potion system
+- [x] Basic ghost AI with patrol and chase behaviors
+- [x] Ghost-player collision and damage system
+- [x] Visual feedback (damage overlay, notifications)
 
 ### Phase 3: Combat & Power-Ups
 - [ ] Weapon system implementation

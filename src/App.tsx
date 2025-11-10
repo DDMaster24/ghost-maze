@@ -4,6 +4,8 @@ import { KeyboardControls } from '@react-three/drei'
 import GameScene from './scenes/GameScene'
 import MainMenu from './components/MainMenu'
 import HUD from './components/HUD'
+import DamageOverlay from './components/DamageOverlay'
+import NotificationDisplay from './components/NotificationDisplay'
 import { useGameStore } from './stores/gameStore'
 
 // Keyboard control mapping
@@ -52,6 +54,8 @@ function App() {
             </Canvas>
           </KeyboardControls>
           <HUD />
+          <DamageOverlay />
+          <NotificationDisplay />
         </>
       )}
     </>

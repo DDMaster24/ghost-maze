@@ -19,6 +19,10 @@ interface GameState {
   gameMode: GameMode
   setGameMode: (mode: GameMode) => void
 
+  // Player position tracking
+  playerPosition: [number, number, number] | null
+  setPlayerPosition: (position: [number, number, number]) => void
+
   // Player stats
   playerStats: PlayerStats
   updatePlayerStats: (stats: Partial<PlayerStats>) => void
@@ -59,6 +63,10 @@ export const useGameStore = create<GameState>((set) => ({
   // Game mode
   gameMode: null,
   setGameMode: (mode) => set({ gameMode: mode }),
+
+  // Player position
+  playerPosition: null,
+  setPlayerPosition: (position) => set({ playerPosition: position }),
 
   // Player stats
   playerStats: initialPlayerStats,
