@@ -9,6 +9,31 @@ export enum CollectibleType {
   POWER_UP = 'power_up',
 }
 
+// Power-up types
+export enum PowerUpType {
+  BLASTER = 'blaster',
+  RAPID_FIRE = 'rapid_fire',
+  SHIELD = 'shield',
+  SPEED_BOOST = 'speed_boost',
+}
+
+// Weapon types
+export enum WeaponType {
+  NONE = 'none',
+  BLASTER = 'blaster',
+  RAPID_FIRE = 'rapid_fire',
+}
+
+// Projectile interface
+export interface Projectile {
+  id: string
+  position: [number, number, number]
+  direction: [number, number, number]
+  speed: number
+  damage: number
+  ownerId: string
+}
+
 // Collectible interface
 export interface Collectible {
   id: string
@@ -42,6 +67,9 @@ export interface PlayerState {
   velocity: [number, number, number]
   health: number
   isDead: boolean
+  currentWeapon: WeaponType
+  powerUpActive: boolean
+  powerUpTimeRemaining: number
 }
 
 // Level configuration

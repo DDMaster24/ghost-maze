@@ -17,6 +17,7 @@ export enum Controls {
   jump = 'jump',
   sprint = 'sprint',
   interact = 'interact',
+  shoot = 'shoot',
 }
 
 const controlsMap = [
@@ -27,6 +28,7 @@ const controlsMap = [
   { name: Controls.jump, keys: ['Space'] },
   { name: Controls.sprint, keys: ['ShiftLeft', 'ShiftRight'] },
   { name: Controls.interact, keys: ['KeyE'] },
+  { name: Controls.shoot, keys: ['KeyF', 'Mouse0'] }, // F key or left mouse button
 ]
 
 function App() {

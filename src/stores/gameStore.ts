@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { WeaponType } from '../types/game'
 
 export type GameMode = 'adventure' | 'multiplayer' | null
 
@@ -12,6 +13,8 @@ interface PlayerStats {
   goldCoins: number
   ghostCoins: number
   currentLevel: number
+  score: number
+  ghostsDefeated: number
 }
 
 interface GameState {
@@ -28,12 +31,22 @@ interface GameState {
   updatePlayerStats: (stats: Partial<PlayerStats>) => void
   damagePlayer: (amount: number) => void
   healPlayer: (amount: number) => void
+  addScore: (points: number) => void
+  incrementGhostsDefeated: () => void
 
   // Collectibles
   collectPellet: () => void
   collectKey: () => void
   collectGoldCoin: (amount: number) => void
   collectGhostCoin: (amount: number) => void
+
+  // Weapon/Power-up system
+  currentWeapon: WeaponType
+  powerUpActive: boolean
+  powerUpEndTime: number | null
+  activatePowerUp: (weapon: WeaponType, duration: number) => void
+  deactivatePowerUp: () => void
+  setWeapon: (weapon: WeaponType) => void
 
   // Game state
   isPaused: boolean
@@ -57,6 +70,8 @@ const initialPlayerStats: PlayerStats = {
   goldCoins: 0,
   ghostCoins: 0,
   currentLevel: 1,
+  score: 0,
+  ghostsDefeated: 0,
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -95,12 +110,29 @@ export const useGameStore = create<GameState>((set) => ({
       },
     })),
 
+  addScore: (points) =>
+    set((state) => ({
+      playerStats: {
+        ...state.playerStats,
+        score: state.playerStats.score + points,
+      },
+    })),
+
+  incrementGhostsDefeated: () =>
+    set((state) => ({
+      playerStats: {
+        ...state.playerStats,
+        ghostsDefeated: state.playerStats.ghostsDefeated + 1,
+      },
+    })),
+
   // Collectibles
   collectPellet: () =>
     set((state) => ({
       playerStats: {
         ...state.playerStats,
         pelletsCollected: state.playerStats.pelletsCollected + 1,
+        score: state.playerStats.score + 10,
       },
     })),
 
@@ -109,6 +141,7 @@ export const useGameStore = create<GameState>((set) => ({
       playerStats: {
         ...state.playerStats,
         keysCollected: state.playerStats.keysCollected + 1,
+        score: state.playerStats.score + 100,
       },
     })),
 
@@ -127,6 +160,29 @@ export const useGameStore = create<GameState>((set) => ({
         ghostCoins: state.playerStats.ghostCoins + amount,
       },
     })),
+
+  // Weapon/Power-up system
+  currentWeapon: WeaponType.NONE,
+  powerUpActive: false,
+  powerUpEndTime: null,
+
+  activatePowerUp: (weapon, duration) => {
+    const endTime = Date.now() + duration * 1000
+    set({
+      currentWeapon: weapon,
+      powerUpActive: true,
+      powerUpEndTime: endTime,
+    })
+  },
+
+  deactivatePowerUp: () =>
+    set({
+      currentWeapon: WeaponType.NONE,
+      powerUpActive: false,
+      powerUpEndTime: null,
+    }),
+
+  setWeapon: (weapon) => set({ currentWeapon: weapon }),
 
   // Game state
   isPaused: false,
