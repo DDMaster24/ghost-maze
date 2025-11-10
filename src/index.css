@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000;
+  color: #fff;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* Loading screen */
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  z-index: 1000;
+}
+
+.loading-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00fff5;
+  text-shadow: 0 0 20px rgba(0, 255, 245, 0.5);
+}
+
+.loading-screen p {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* HUD Overlay */
+.hud-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hud-overlay > * {
+  pointer-events: auto;
+}
+
+/* Health Bar */
+.health-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00fff5;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.health-bar-fill {
+  height: 20px;
+  background: linear-gradient(90deg, #ff0000 0%, #ff6b6b 100%);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+/* Score Display */
+.score-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Menu */
+.menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 500;
+}
+
+.menu-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 3px solid #00fff5;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.menu-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #00fff5;
+  text-shadow: 0 0 20px rgba(0, 255, 245, 0.5);
+}
+
+.menu-button {
+  display: block;
+  width: 100%;
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.menu-button:active {
+  transform: translateY(0);
+}
